@@ -1,11 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://www.primeapps.io/assets/images/favicon.png" rel="icon" type="image/png">
     <title>Kanban Board</title>
+
+    <style>
+        .container {
+            display: flex;
+            background-color: #f7f7f7;
+        }
+
+        .header {
+            border-radius: 5px;
+            width: 340px;
+            height: 40px;
+            margin-top: 0px;
+            background-color: rgb(190, 144, 212);
+            color: white;
+        }
+
+        .fixed-1 {
+            border-radius: 5px;
+            margin-top: 20px;
+            margin-left: 40px;
+            background-color: #ffffff;
+        }
+
+        .fixed-2 {
+            position: relative;
+            border-radius: 5px;
+            width: 300px;
+            height: 150px;
+            margin-left: 20px;
+            margin-right: 20px;
+            margin-bottom: 20px;
+            background-color: #f7f7f7;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        .fixed-2 hr {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 99%;
+            margin: auto;
+            border-bottom: 3px solid #5aabe3;
+        }
+
+        .flex-item {
+            flex-grow: 1;
+        }
+
+        .input-design {
+            margin-top: 5px;
+        }
+
+    </style>
+
 </head>
+
 <body>
-    
+
+    <div class="container">
+
+        <div class="fixed-1">
+
+            <div class="header">
+                <h3>
+                    Qualification
+                    <kendo-button icon="'k-icon k-i-plus-outline'" style="float: right"></kendo-button>
+                </h3>
+            </div>
+
+            <div class="fixed-2">
+                <p>
+                    Name <input class="input-design" type="name" placeholder="Johny Whiteman"></label>
+                    <br>
+                    City <input class="input-design" type="city" placeholder="London"></label>
+                </p>
+                <hr>
+            </div>
+
+            <div class="fixed-2">
+                <p>
+                    Name <input class="input-design" type="name" placeholder="Johny Whiteman"></label>
+                    <br>
+                    City <input class="input-design" type="city" placeholder="London"></label>
+                </p>
+                <hr>
+            </div>
+
+            <div class="fixed-2">
+                <p>
+                    Name <input class="input-design" type="name" placeholder="Johny Whiteman"></label>
+                    <br>
+                    City <input class="input-design" type="city" placeholder="London"></label>
+                </p>
+                <hr>
+            </div>
+
+        </div>
+
+        <div class="fixed-1">
+
+            <div class="header">
+                <h3>
+                    Proposal
+                    <kendo-button icon="'k-icon k-i-plus-outline'" style="float: right"></kendo-button>
+                </h3>
+            </div>
+
+            <div class="fixed-2">
+                <p>
+                    Name <input class="input-design" type="name" placeholder="Johny Whiteman"></label>
+                    <br>
+                    City <input class="input-design" type="city" placeholder="London"></label>
+                </p>
+                <hr>
+            </div>
+
+            <div class="fixed-2">
+                <p>
+                    Name <input class="input-design" type="name" placeholder="Johny Whiteman"></label>
+                    <br>
+                    City <input class="input-design" type="city" placeholder="London"></label>
+                </p>
+                <hr>
+            </div>
+
+            <div class="fixed-2">
+                <p>
+                    Name <input class="input-design" type="name" placeholder="Johny Whiteman"></label>
+                    <br>
+                    City <input class="input-design" type="city" placeholder="London"></label>
+                </p>
+                <hr>
+            </div>
+
+        </div>
+
+    </div>
+
 </body>
+
 </html>
