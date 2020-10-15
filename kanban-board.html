@@ -8,6 +8,109 @@
     <link href="https://www.primeapps.io/assets/images/favicon.png" rel="icon" type="image/png">
     <title>Kanban Board</title>
 
+    <link rel="stylesheet" href="styles/kendo.common.min.css" />
+    <link rel="stylesheet" href="styles/kendo.default.min.css" />
+    <link rel="stylesheet" href="styles/kendo.default.mobile.min.css" />
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/kendo.all.min.js"></script>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="chart-1">
+
+            <div class="header">
+                <h3>
+                    Qualification
+                    <kendo-button icon="'k-icon k-i-plus-outline'" style="float: right"></kendo-button>
+                </h3>
+            </div>
+
+            <div class="chart-2">
+                <p>
+                <h4 class="h4-style"><strong>ABC Company</strong></h4>
+                <br>
+                Name <input class="input-design" type="name" placeholder="Johny Whiteman"></label>
+                <br>
+                City <input class="input-design" type="city" placeholder="London"></label>
+                </p>
+                <hr>
+            </div>
+
+            <div class="chart-2">
+                <p>
+                <h4 class="h4-style"><strong>ABC Company</strong></h4>
+                <br>
+                Name <input class="input-design" type="name" placeholder="Johny Whiteman"></label>
+                <br>
+                City <input class="input-design" type="city" placeholder="London"></label>
+                </p>
+                <hr>
+            </div>
+
+            <div class="chart-2">
+                <p>
+                <h4 class="h4-style"><strong>ABC Company</strong></h4>
+                <br>
+                Name <input class="input-design" type="name" placeholder="Johny Whiteman"></label>
+                <br>
+                City <input class="input-design" type="city" placeholder="London"></label>
+                </p>
+                <hr>
+            </div>
+
+        </div>
+
+        <div class="chart-1">
+
+            <div class="header">
+                <h3>
+                    Proposal
+                    <kendo-button icon="'k-icon k-i-plus-outline'" style="float: right"></kendo-button>
+                </h3>
+            </div>
+
+            <div class="chart-2">
+                <p>
+                <h4 class="h4-style"><strong>ABC Company</strong></h4>
+                <br>
+                Name <input class="input-design" type="name" placeholder="Johny Whiteman"></label>
+                <br>
+                City <input class="input-design" type="city" placeholder="London"></label>
+                </p>
+                <hr>
+            </div>
+
+            <div class="chart-2">
+                <p>
+                <h4 class="h4-style"><strong>ABC Company</strong></h4>
+                <br>
+                Name <input class="input-design" type="name" placeholder="Johny Whiteman"></label>
+                <br>
+                City <input class="input-design" type="city" placeholder="London"></label>
+                </p>
+                <hr>
+            </div>
+
+            <div class="chart-2">
+                <p>
+                <h4 class="h4-style"><strong>ABC Company</strong></h4>
+                <br>
+                Name <input class="input-design" type="name" placeholder="Johny Whiteman"></label>
+                <br>
+                City <input class="input-design" type="city" placeholder="London"></label>
+                </p>
+                <hr>
+            </div>
+
+        </div>
+
+    </div>
+
     <style>
         .container {
             display: flex;
@@ -18,19 +121,18 @@
             border-radius: 5px;
             width: 340px;
             height: 40px;
-            margin-top: 0px;
-            background-color: rgb(190, 144, 212);
-            color: white;
+            margin-bottom: 20px;
+            background-color: #be90e4;
+            color: #ffffff;
         }
 
-        .fixed-1 {
+        .chart-1 {
             border-radius: 5px;
-            margin-top: 20px;
             margin-left: 40px;
             background-color: #ffffff;
         }
 
-        .fixed-2 {
+        .chart-2 {
             position: relative;
             border-radius: 5px;
             width: 300px;
@@ -42,7 +144,7 @@
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
         }
 
-        .fixed-2 hr {
+        .chart-2 hr {
             position: absolute;
             left: 0;
             right: 0;
@@ -60,91 +162,12 @@
             margin-top: 5px;
         }
 
+        .h4-style {
+            color: #4b6a9f;
+            margin-bottom: 0px;
+            margin-left: 10px;
+        }
     </style>
-
-</head>
-
-<body>
-
-    <div class="container">
-
-        <div class="fixed-1">
-
-            <div class="header">
-                <h3>
-                    Qualification
-                    <kendo-button icon="'k-icon k-i-plus-outline'" style="float: right"></kendo-button>
-                </h3>
-            </div>
-
-            <div class="fixed-2">
-                <p>
-                    Name <input class="input-design" type="name" placeholder="Johny Whiteman"></label>
-                    <br>
-                    City <input class="input-design" type="city" placeholder="London"></label>
-                </p>
-                <hr>
-            </div>
-
-            <div class="fixed-2">
-                <p>
-                    Name <input class="input-design" type="name" placeholder="Johny Whiteman"></label>
-                    <br>
-                    City <input class="input-design" type="city" placeholder="London"></label>
-                </p>
-                <hr>
-            </div>
-
-            <div class="fixed-2">
-                <p>
-                    Name <input class="input-design" type="name" placeholder="Johny Whiteman"></label>
-                    <br>
-                    City <input class="input-design" type="city" placeholder="London"></label>
-                </p>
-                <hr>
-            </div>
-
-        </div>
-
-        <div class="fixed-1">
-
-            <div class="header">
-                <h3>
-                    Proposal
-                    <kendo-button icon="'k-icon k-i-plus-outline'" style="float: right"></kendo-button>
-                </h3>
-            </div>
-
-            <div class="fixed-2">
-                <p>
-                    Name <input class="input-design" type="name" placeholder="Johny Whiteman"></label>
-                    <br>
-                    City <input class="input-design" type="city" placeholder="London"></label>
-                </p>
-                <hr>
-            </div>
-
-            <div class="fixed-2">
-                <p>
-                    Name <input class="input-design" type="name" placeholder="Johny Whiteman"></label>
-                    <br>
-                    City <input class="input-design" type="city" placeholder="London"></label>
-                </p>
-                <hr>
-            </div>
-
-            <div class="fixed-2">
-                <p>
-                    Name <input class="input-design" type="name" placeholder="Johny Whiteman"></label>
-                    <br>
-                    City <input class="input-design" type="city" placeholder="London"></label>
-                </p>
-                <hr>
-            </div>
-
-        </div>
-
-    </div>
 
 </body>
 
