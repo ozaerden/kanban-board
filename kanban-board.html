@@ -23,7 +23,7 @@
                         <kendo-button icon="'k-icon k-i-plus-outline'" style="float: right"></kendo-button>
                     </h3>
                 </div>
-                <select name="board1" id="board1" kendo-list-box k-options="boardOptions1"></select>
+                <select name="board-col" id="board-col" kendo-list-box k-options="boardOptions"></select>
             </div>
 
             <div class="chart-1">
@@ -33,7 +33,7 @@
                         <kendo-button icon="'k-icon k-i-plus-outline'" style="float: right"></kendo-button>
                     </h3>
                 </div>
-                <select name="board1" id="board1" kendo-list-box k-options="boardOptions1"></select>
+                <select name="board-col" id="board-col" kendo-list-box k-options="boardOptions"></select>
             </div>
 
         </div>
@@ -66,12 +66,12 @@
                         url: "https://demos.telerik.com/kendo-ui/service/Customers",
                             dataType: "jsonp"
                     }*/
-                    $scope.boardOptions1 = {
+                    $scope.boardOptions = {
 
-                        dataTextField: "ProductName",
-                        dataValueField: "ProductID",
-                        dropSources: ["board1"],
-                        connectWith: "board1",
+                        dataTextField: "rowName",
+                        dataValueField: "rowID",
+                        dropSources: ["board-col"],
+                        connectWith: "board-col",
                         template: boardTemplate,
                         dataSource: {
                             serverFiltering: true,
@@ -91,26 +91,11 @@
                             }
                         }
                     };
-                    $scope.selectOptions2 = {
-                        dataTextField: "ProductName",
-                        dataValueField: "ProductID",
-                        dropSources: ["selected1"],
-                        draggable: {
-                            enabled: true,
-                            placeholder: function (element) {
-                                return element.clone().css({
-                                    "opacity": 0.3,
-                                    "border": "1px dashed #000000"
-                                });
-                            }
-                        }
-                    };
 
                 })
         </script>
 
         <style>
-            
             html {
                 font-size: 14px;
                 font-family: Arial, Helvetica, sans-serif;
@@ -168,10 +153,11 @@
                 left: 0;
                 right: 0;
                 bottom: 0;
-                width: 99%;
                 margin: auto;
-                border-bottom: 3px solid #5aabe3;
                 border-top: 0;
+                border-bottom: 3px solid #5aabe3;
+                border-bottom-left-radius: 10%;
+                border-bottom-right-radius: 10%;
             }
 
             .flex-item {
