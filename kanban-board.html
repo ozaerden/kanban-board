@@ -1,234 +1,195 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <link href="https://www.primeapps.io/assets/images/favicon.png" rel="icon" type="image/png">
     <title>Kanban Board</title>
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2020.3.915/styles/kendo.default-v2.min.css" />
 
-    <link rel="stylesheet" href="styles/kendo.common.min.css" />
-    <link rel="stylesheet" href="styles/kendo.default.min.css" />
-    <link rel="stylesheet" href="styles/kendo.default.mobile.min.css" />
-
-    <script src="js/jquery.min.js"></script>
-    <script src="js/kendo.all.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2020.3.915/js/jquery.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2020.3.915/js/angular.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2020.3.915/js/kendo.all.min.js"></script>
 
 </head>
 
 <body>
+    <div id="kanban" ng-app="KendoDemos">
+        <div class="container" ng-controller="MyCtrl">
 
-    <div class="container">
-
-        <div class="chart-1">
-
-            <div class="header">
-                <h3>
-                    Qualification
-                    <!-- <kendo-button icon="'k-icon k-i-plus-outline'" style="float: right"></kendo-button> -->
-                </h3>
+            <div class="chart-1">
+                <div class="header">
+                    <h3>
+                        Qualification
+                        <kendo-button icon="'k-icon k-i-plus-outline'" style="float: right"></kendo-button>
+                    </h3>
+                </div>
+                <select name="board1" id="board1" kendo-list-box k-options="boardOptions1"></select>
             </div>
 
-            <div class="chart-2">
-                <p>
-                <h4 class="h4-design"><strong>ABC Company</strong></h4>
-                <br>
-                Name <input class="input-design" type="name" placeholder="Johny Whiteman"></label>
-                <br>
-                City <input class="input-design" type="city" placeholder="London"></label>
-                </p>
-                <hr>
-            </div>
-
-            <div class="chart-2">
-                <p>
-                <h4 class="h4-design"><strong>ABC Company</strong></h4>
-                <br>
-                Name <input class="input-design" type="name" placeholder="Johny Whiteman"></label>
-                <br>
-                City <input class="input-design" type="city" placeholder="London"></label>
-                </p>
-                <hr>
-            </div>
-
-            <div class="chart-2">
-                <p>
-                <h4 class="h4-design"><strong>ABC Company</strong></h4>
-                <br>
-                Name <input class="input-design" type="name" placeholder="Johny Whiteman"></label>
-                <br>
-                City <input class="input-design" type="city" placeholder="London"></label>
-                </p>
-                <hr>
+            <div class="chart-1">
+                <div class="header">
+                    <h3>
+                        Proposal
+                        <kendo-button icon="'k-icon k-i-plus-outline'" style="float: right"></kendo-button>
+                    </h3>
+                </div>
+                <select name="board1" id="board1" kendo-list-box k-options="boardOptions1"></select>
             </div>
 
         </div>
 
-        <div class="chart-1">
+        <script>
 
-            <div class="header">
-                <h3>
-                    Proposal
-                    <!-- <kendo-button icon="'k-icon k-i-plus-outline'" style="float: right"></kendo-button> -->
-                </h3>
-            </div>
+            angular.module("KendoDemos", ["kendo.directives"])
+                .controller("MyCtrl", function ($scope) {
 
-            <div class="chart-2">
-                <p>
-                <h4 class="h4-design"><strong>ABC Company</strong></h4>
-                <br>
-                Name <input class="input-design" type="name" placeholder="Johny Whiteman"></label>
-                <br>
-                City <input class="input-design" type="city" placeholder="London"></label>
-                </p>
-                <hr>
-            </div>
+                    var boardTemplate = '<div class="chart-2"><p><h4 class="h4-design"><strong>#: data.company #</strong></h4><br>#: data.name #<br>#: data.city #</label></p><hr></div>';
 
-            <div class="chart-2">
-                <p>
-                <h4 class="h4-design"><strong>ABC Company</strong></h4>
-                <br>
-                Name <input class="input-design" type="name" placeholder="Johny Whiteman"></label>
-                <br>
-                City <input class="input-design" type="city" placeholder="London"></label>
-                </p>
-                <hr>
-            </div>
+                    $scope.datas = [
+                        {
+                            "company": "Company 1",
+                            "name": "Name 1",
+                            "city": "City 1"
+                        },
+                        {
+                            "company": "Company 2",
+                            "name": "Name 2",
+                            "city": "City 2"
+                        },
+                        {
+                            "company": "Company 3",
+                            "name": "Name 3",
+                            "city": "City 3"
+                        }
+                    ];
+                    /*{
+                        url: "https://demos.telerik.com/kendo-ui/service/Customers",
+                            dataType: "jsonp"
+                    }*/
+                    $scope.boardOptions1 = {
 
-            <div class="chart-2">
-                <p>
-                <h4 class="h4-design"><strong>ABC Company</strong></h4>
-                <br>
-                Name <input class="input-design" type="name" placeholder="Johny Whiteman"></label>
-                <br>
-                City <input class="input-design" type="city" placeholder="London"></label>
-                </p>
-                <hr>
-            </div>
-
-        </div>
-
-    </div>
-
-    <div id="example" ng-app="KendoDemos">
-        <div class="demo-section k-content wide" ng-controller="MyCtrl">
-            <select name="selected1" id="selected1" kendo-list-box k-options="selectOptions1"></select>
-            <select name="selected" id="selected" kendo-list-box k-options="selectOptions2"></select>
-        </div>
-    </div>
-
-    <script>
-        angular.module("KendoDemos", ["kendo.directives"])
-            .controller("MyCtrl", function ($scope) {
-                $scope.selectOptions1 = {
-
-                    dataTextField: "ProductName",
-                    dataValueField: "ProductID",
-                    connectWith: "selected",
-                    draggable: true,
-                    dataSource: {
-                        type: "odata",
-                        serverFiltering: true,
-                        transport: {
-                            read: {
-                                url: "https://demos.telerik.com/kendo-ui/service/Northwind.svc/Products",
+                        dataTextField: "ProductName",
+                        dataValueField: "ProductID",
+                        dropSources: ["board1"],
+                        connectWith: "board1",
+                        template: boardTemplate,
+                        dataSource: {
+                            serverFiltering: true,
+                            transport: {
+                                read: function (options) {
+                                    options.success($scope.datas);
+                                }
+                            }
+                        },
+                        draggable: {
+                            enabled: true,
+                            placeholder: function (element) {
+                                return element.clone().css({
+                                    "opacity": 0.3,
+                                    "border": "1px dashed #000000"
+                                });
                             }
                         }
-                    }
-                };
-                $scope.selectOptions2 = {
-                    dataTextField: "ProductName",
-                    dataValueField: "ProductID",
-                    dropSources: ["selected1"],
-                    draggable: {
-                        enabled: true,
-                        placeholder: function (element) {
-                            return element.clone().css({
-                                "opacity": 0.3,
-                                "border": "1px dashed #000000"
-                            });
+                    };
+                    $scope.selectOptions2 = {
+                        dataTextField: "ProductName",
+                        dataValueField: "ProductID",
+                        dropSources: ["selected1"],
+                        draggable: {
+                            enabled: true,
+                            placeholder: function (element) {
+                                return element.clone().css({
+                                    "opacity": 0.3,
+                                    "border": "1px dashed #000000"
+                                });
+                            }
                         }
-                    }
-                };
-            })
-    </script>
+                    };
 
-    
+                })
+        </script>
 
-    <style>
-        #example .demo-section {
-            max-width: none;
-            width: 600px;
-        }
+        <style>
+            
+            html {
+                font-size: 14px;
+                font-family: Arial, Helvetica, sans-serif;
+            }
 
-        #example .k-listbox {
-            width: 236px;
-            height: 350px;
-        }
+            #kanban .demo-section {
+                max-width: none;
+                width: 600px;
+            }
 
-        #example .k-listbox:first-of-type {
-            width: 270px;
-            margin-right: 1px;
-        }
+            #kanban .k-listbox {
+                width: 236px;
+                height: 350px;
+            }
 
-        .container {
-            display: flex;
-            background-color: #f7f7f7;
-        }
+            #kanban .k-listbox:first-of-type {
+                width: 270px;
+                margin-right: 1px;
+            }
 
-        .header {
-            border-radius: 5px;
-            width: 340px;
-            height: 40px;
-            margin-bottom: 20px;
-            background-color: #be90e4;
-            color: #ffffff;
-        }
+            .container {
+                display: flex;
+                background-color: #f7f7f7;
+            }
 
-        .chart-1 {
-            border-radius: 5px;
-            margin-left: 40px;
-            background-color: #ffffff;
-        }
+            .header {
+                border-radius: 5px;
+                width: 340px;
+                height: 40px;
+                margin-bottom: 20px;
+                background-color: #be90e4;
+                color: #ffffff;
+            }
 
-        .chart-2 {
-            position: relative;
-            border-radius: 5px;
-            width: 300px;
-            height: 150px;
-            margin-left: 20px;
-            margin-right: 20px;
-            margin-bottom: 20px;
-            background-color: #f7f7f7;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        }
+            .chart-1 {
+                border-radius: 5px;
+                margin-left: 40px;
+                background-color: #ffffff;
+            }
 
-        .chart-2 hr {
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            width: 99%;
-            margin: auto;
-            border-bottom: 3px solid #5aabe3;
-        }
+            .chart-2 {
+                position: relative;
+                border-radius: 5px;
+                width: 300px;
+                height: 150px;
+                margin-left: 20px;
+                margin-right: 20px;
+                margin-bottom: 20px;
+                background-color: #f7f7f7;
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            }
 
-        .flex-item {
-            flex-grow: 1;
-        }
+            .chart-2 hr {
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                width: 99%;
+                margin: auto;
+                border-bottom: 3px solid #5aabe3;
+                border-top: 0;
+            }
 
-        .input-design {
-            margin-top: 5px;
-        }
+            .flex-item {
+                flex-grow: 1;
+            }
 
-        .h4-design {
-            color: #4b6a9f;
-            margin-bottom: 0px;
-            margin-left: 10px;
-        }
-    </style>
+            .input-design {
+                margin-top: 5px;
+            }
 
+            .h4-design {
+                color: #4b6a9f;
+                margin-bottom: 0px;
+                margin-left: 10px;
+            }
+        </style>
+
+    </div>
 
 </body>
 
