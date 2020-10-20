@@ -20,10 +20,7 @@ angular.module("KendoDemos", ["kendo.directives"])
                 "city": "City 3"
             }
         ];
-        /*{
-url: "https://demos.telerik.com/kendo-ui/service/Customers",
-                dataType: "jsonp"
-        }*/
+        
         $scope.boardOptions = {
 
             dataTextField: "rowName",
@@ -50,4 +47,4 @@ url: "https://demos.telerik.com/kendo-ui/service/Customers",
             }
         };
 
-    })
+})
