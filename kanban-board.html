@@ -9,6 +9,7 @@
     <script src="https://kendo.cdn.telerik.com/2020.3.915/js/jquery.min.js"></script>
     <script src="https://kendo.cdn.telerik.com/2020.3.915/js/angular.min.js"></script>
     <script src="https://kendo.cdn.telerik.com/2020.3.915/js/kendo.all.min.js"></script>
+    <script src="kanban.js"></script>
 
 </head>
 
@@ -19,7 +20,7 @@
             <div class="chart-1">
                 <div class="header">
                     <h3>
-                        Qualification
+                        Todo
                         <kendo-button icon="'k-icon k-i-plus-outline'" style="float: right"></kendo-button>
                     </h3>
                 </div>
@@ -29,7 +30,7 @@
             <div class="chart-1">
                 <div class="header" style="background-color: #5aabe3" >
                     <h3>
-                        Proposal
+                        Ongoing
                         <kendo-button icon="'k-icon k-i-plus-outline'" style="float: right"></kendo-button>
                     </h3>
                 </div>
@@ -39,7 +40,7 @@
             <div class="chart-1">
                 <div class="header" style="background-color: #87d37c" >
                     <h3>
-                        Proposal
+                        Closed
                         <kendo-button icon="'k-icon k-i-plus-outline'" style="float: right"></kendo-button>
                     </h3>
                 </div>
@@ -47,63 +48,6 @@
             </div>
 
         </div>
-
-        <script>
-
-            angular.module("KendoDemos", ["kendo.directives"])
-                .controller("MyCtrl", function ($scope) {
-
-                    var boardTemplate = '<div class="chart-2"><p><h4 class="h4-design"><strong>#: data.company #</strong></h4><br>#: data.name #<br>#: data.city #</label></p><hr></div>';
-
-                    $scope.datas = [
-                        {
-                            "company": "Company 1",
-                            "name": "Name 1",
-                            "city": "City 1"
-                        },
-                        {
-                            "company": "Company 2",
-                            "name": "Name 2",
-                            "city": "City 2"
-                        },
-                        {
-                            "company": "Company 3",
-                            "name": "Name 3",
-                            "city": "City 3"
-                        }
-                    ];
-                    /*{
-                        url: "https://demos.telerik.com/kendo-ui/service/Customers",
-                            dataType: "jsonp"
-                    }*/
-                    $scope.boardOptions = {
-
-                        dataTextField: "rowName",
-                        dataValueField: "rowID",
-                        dropSources: ["board-col"],
-                        connectWith: "board-col",
-                        template: boardTemplate,
-                        dataSource: {
-                            serverFiltering: true,
-                            transport: {
-                                read: function (options) {
-                                    options.success($scope.datas);
-                                }
-                            }
-                        },
-                        draggable: {
-                            enabled: true,
-                            placeholder: function (element) {
-                                return element.clone().css({
-                                    "opacity": 0.3,
-                                    "border": "1px dashed #000000"
-                                });
-                            }
-                        }
-                    };
-
-                })
-        </script>
 
         <style>
             html {
