@@ -18,7 +18,7 @@
         <div class="container" ng-controller="MyCtrl">
 
             <div class="chart-1">
-                <div class="header">
+                <div class="header" id="header1">
                     <h3>
                         Todo
                         <kendo-button icon="'k-icon k-i-plus-outline'" style="float: right"></kendo-button>
@@ -28,7 +28,7 @@
             </div>
 
             <div class="chart-1">
-                <div class="header" style="background-color: #5aabe3" >
+                <div class="header" id="header2">
                     <h3>
                         Ongoing
                         <kendo-button icon="'k-icon k-i-plus-outline'" style="float: right"></kendo-button>
@@ -38,7 +38,7 @@
             </div>
 
             <div class="chart-1">
-                <div class="header" style="background-color: #87d37c" >
+                <div class="header" id="header3">
                     <h3>
                         Closed
                         <kendo-button icon="'k-icon k-i-plus-outline'" style="float: right"></kendo-button>
@@ -80,8 +80,19 @@
                 width: 340px;
                 height: 40px;
                 margin-bottom: 20px;
-                background-color: #be90e4;
                 color: #ffffff;
+            }
+
+            #header1 {
+                background-color: #be90e4;
+            }
+
+            #header2 {
+                background-color: #5aabe3;
+            }
+
+            #header3 {
+                background-color: #87d37c;
             }
 
             .chart-1 {
@@ -127,6 +138,7 @@
                 margin-bottom: 0px;
                 margin-left: 10px;
             }
+
         </style>
 
     </div>
