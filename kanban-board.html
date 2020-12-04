@@ -2,147 +2,133 @@
 <html>
 
 <head>
-    <link href="https://www.primeapps.io/assets/images/favicon.png" rel="icon" type="image/png">
+    <meta charset="utf-8">
     <title>Kanban Board</title>
-    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2020.3.915/styles/kendo.default-v2.min.css" />
-
-    <script src="https://kendo.cdn.telerik.com/2020.3.915/js/jquery.min.js"></script>
-    <script src="https://kendo.cdn.telerik.com/2020.3.915/js/angular.min.js"></script>
-    <script src="https://kendo.cdn.telerik.com/2020.3.915/js/kendo.all.min.js"></script>
-    <script src="kanban.js"></script>
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2018.3.1017/styles/kendo.common.min.css">
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2018.3.1017/styles/kendo.default.min.css">
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2018.3.911/styles/kendo.bootstrap-v.min.css">
+    <link rel="stylesheet" href="kanban-style.css">
+    <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2018.3.911/js/kendo.all.min.js"></script>
 
 </head>
 
 <body>
-    <div id="kanban" ng-app="KendoDemos">
-        <div class="container" ng-controller="MyCtrl">
-
-            <div class="chart-1">
-                <div class="header" id="header1">
-                    <h3>
-                        Todo
-                        <kendo-button icon="'k-icon k-i-plus'" style="float: right"></kendo-button>
-                    </h3>
-                </div>
-                <div>
-                    <select name="board-col" id="board-col" kendo-list-box k-options="boardOptions"></select>
-                    <kendo-button icon="'k-icon k-i-edit'" style="float: right"></kendo-button>
-                </div>
-            </div>
-
-            <div class="chart-1">
-                <div class="header" id="header2">
-                    <h3>
-                        Ongoing
-                        <kendo-button icon="'k-icon k-i-plus'" style="float: right"></kendo-button>
-                    </h3>
-                </div>
-                <select name="board-col" id="board-col" kendo-list-box k-options="boardOptions"></select>
-            </div>
-
-            <div class="chart-1">
-                <div class="header" id="header3">
-                    <h3>
-                        Closed
-                        <kendo-button icon="'k-icon k-i-plus'" style="float: right"></kendo-button>
-                    </h3>
-                </div>
-                <select name="board-col" id="board-col" kendo-list-box k-options="boardOptions"></select>
-            </div>
-
+    <div class="kanban-board"></div>
+    <script id="listTemplate" type="text/x-kendo-template">
+      <div class="list-wrapper">
+        <div class="list-header">
+          <span class="list-title">#: name #</span>
+          <div class="pull-right">
+            <span class="k-add-button k-icon k-i-add"></span>
+          </div>
         </div>
+        <div id="list-#: listID #" class="list"></div>
+      </div>
+    </script>
 
-        <style>
-
-            html {
-                font-size: 14px;
-                font-family: Arial, Helvetica, sans-serif;
-            }
-
-            #kanban .demo-section {
-                max-width: none;
-                width: 600px;
-            }
-
-            #kanban .k-listbox {
-                width: 300px;
-                height: 450px;
-            }
-
-            #kanban .k-listbox:first-of-type {
-                width: 300px;
-                margin-right: 1px;
-            }
-
-            .container {
-                display: flex;
-                background-color: #f7f7f7;
-            }
-
-            .header {
-                border-radius: 5px;
-                width: 340px;
-                height: 40px;
-                margin-bottom: 20px;
-                color: #ffffff;
-            }
-
-            #header1 {
-                background-color: #be90e4;
-            }
-
-            #header2 {
-                background-color: #5aabe3;
-            }
-
-            #header3 {
-                background-color: #87d37c;
-            }
-
-            .chart-1 {
-                border-radius: 5px;
-                margin-left: 40px;
-                background-color: #ffffff;
-            }
-
-            .chart-2 {
-                position: relative;
-                border-radius: 5px;
-                width: 300px;
-                height: 150px;
-                margin-left: 20px;
-                margin-right: 20px;
-                margin-bottom: 20px;
-                background-color: #f7f7f7;
-                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-            }
-
-            .chart-2 hr {
-                position: absolute;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                margin: auto;
-                border-top: 0;
-                border-bottom: 3px solid #5aabe3;
-                border-bottom-left-radius: 10%;
-                border-bottom-right-radius: 10%;
-            }
-
-            .flex-item {
-                flex-grow: 1;
-            }
-
-            .h4-design {
-                color: #4b6a9f;
-                margin-bottom: 0px;
-                margin-left: 10px;
-                width: 250px;
-            }
-        </style>
-
+    <script id="cardTemplate" type="text/x-kendo-template">
+    <div class="card">
+      #= name #
+      <div class="card-controls">
+        <span class="k-edit-button k-icon k-i-edit"></span>
+        <span class="k-delete-button k-icon k-i-close"></span>
+      </div>
     </div>
+  </script>
 
+    <script id="cardEditTemplate" type="text/x-kendo-template">
+      <div>
+        <textarea class="card-edit" name="name" data-bind="value:name" required="required"></textarea>
+        <div class="card-edit-controls">
+          <button class="k-update-button k-button">
+            <span class="k-icon k-i-check"></span> Save
+          </button>
+        </div>
+      </div>
+    </script>
+    <script>
+        $('.kanban-board').kendoListView({
+            theme: 'default',
+            template: kendo.template($('#listTemplate').html()),
+            dataSource: [
+                { listID: 0, name: 'To Do' },
+                { listID: 1, name: 'In Progress' },
+                { listID: 2, name: 'Closed-Won' },
+                { listID: 3, name: 'Closed-Lost' }
+            ]
+        });
+
+        $('#list-0').kendoListView({
+            theme: 'default',
+            template: kendo.template($('#cardTemplate').html()),
+            editTemplate: kendo.template($('#cardEditTemplate').html()),
+            dataSource: [
+                { cardID: 0, name: 'To Do Element 1' },
+                { cardID: 1, name: 'To Do Element 2' },
+                { cardID: 2, name: 'To Do Element 3' },
+                { cardID: 3, name: 'To Do Element 4' }
+            ]
+        });
+
+        $('#list-1').kendoListView({
+            theme: 'default',
+            template: kendo.template($('#cardTemplate').html()),
+            editTemplate: kendo.template($('#cardEditTemplate').html()),
+            dataSource: [
+                { cardID: 4, name: 'In Progress Element 1' },
+                { cardID: 5, name: 'In Progress Element 2' }
+            ]
+        });
+
+        $('#list-2').kendoListView({
+            theme: 'default',
+            template: kendo.template($('#cardTemplate').html()),
+            editTemplate: kendo.template($('#cardEditTemplate').html()),
+            dataSource: [
+                { cardID: 6, name: 'Closed-Won Element 1' },
+                { cardID: 7, name: 'Closed-Won Element 2' },
+                { cardID: 8, name: 'Closed-Won Element 3' }
+            ]
+        });
+
+        $('#list-3').kendoListView({
+            theme: 'default',
+            template: kendo.template($('#cardTemplate').html()),
+            editTemplate: kendo.template($('#cardEditTemplate').html())
+        });
+
+        var sortableOptions = {
+            filter: '.card',
+            container: '.kanban-board',
+            connectWith: '.list',
+            cursor: 'grabbing',
+            placeholder: function (element) {
+                return $('<div class="card"></div>').css({
+                    background: '#ddd'
+                });
+            },
+            hint: function (element) {
+                return element.clone().css({
+                    width: '15em',
+                    transform: 'rotate(-5deg)',
+                    border: '1px solid #eee'
+                });
+            }
+        };
+
+        $('#list-0').kendoSortable(sortableOptions);
+        $('#list-1').kendoSortable(sortableOptions);
+        $('#list-2').kendoSortable(sortableOptions);
+        $('#list-3').kendoSortable(sortableOptions);
+
+        $('.k-add-button').click(function (e) {
+            var list = $(e.target).closest('.list-wrapper').find('.list');
+            var listID = '#' + $(list).prop('id');
+            var listView = $(listID).data('kendoListView');
+            listView.add();
+        });
+    </script>
 </body>
 
 </html>
